@@ -8,16 +8,6 @@
   <div class="container mx-auto p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
     <h1 class="text-3xl font-bold text-center mb-4">Welcome to Expense Tracker</h1>
     <p class="text-lg text-center mb-8">Track your expenses and stay on top of your finances</p>
-    <div class="flex flex-col md:flex-row justify-center mb-8">
-      <div class="bg-white rounded-lg shadow-md p-4 w-full md:w-1/2 xl:w-1/3 mr-4 mb-4 md:mb-0">
-        <h2 class="text-xl font-bold mb-2">Total Expenses</h2>
-        <p class="text-lg">$<span id="total-expenses">0.00</span></p>
-      </div>
-      <div class="bg-white rounded-lg shadow-md p-4 w-full md:w-1/2 xl:w-1/3 ml-4 mb-4 md:mb-0">
-        <h2 class="text-xl font-bold mb-2">Total Income</h2>
-        <p class="text-lg">$<span id="total-income">0.00</span></p>
-      </div>
-    </div>
     <div class="flex justify-center mb-8">
       <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-wide">Login</a>
       <a href="{% url 'accounts:signup' %}" class="btn btn-secondary btn-wide ml-4">Signup</a>

@@ -7,12 +7,12 @@ import uvicorn
 from django.core.exceptions import ImproperlyConfigured
 
 env = environ.Env()
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 try:    
     APP_NAME = env("APP_NAME")
 except ImproperlyConfigured:
-    env.read_env(BASE_DIR.parent.parent / '.env')
+    env.read_env(BASE_DIR / '.env')
     APP_NAME = env("APP_NAME", default="app")
 APP_DIR = env("APP_DIR", default="src")
 APP_PORT = env("APP_PORT", default=8000)
@@ -27,14 +27,14 @@ if __name__ == '__main__':
         host=HOST,
         reload=True,
         reload_includes=[
-            ".src/*.py",
-            ".src/**/*.py",
-            ".src/templates/*.html",
-            ".src/templates/**/*.html",
-            ".src/staticfiles/css/*.css",
-            ".src/staticfiles/css/**/*.css",
-            ".src/staticfiles/js/*.js",
-            ".src/staticfiles/js/**/*.js",
+            "src/*.py",
+            "src/**/*.py",
+            "src/templates/*.html",
+            "src/templates/pages/*.html",
+            "src/staticfiles/css/*.css",
+            "src/staticfiles/css/**/*.css",
+            "src/staticfiles/js/*.js",
+            "src/staticfiles/js/**/*.js",
         ],
         loop='asyncio',
     )

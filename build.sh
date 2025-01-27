@@ -31,14 +31,14 @@ if [ "$BUILD" = "1" ]; then
 
         # Function to create user
         create_user() {
-            echo "Creating user '$POSTGRES_USER' with password..."
+            echo "Creating user '$POSTGRES_USER' with password '$POSTGRES_PASSWORD'..."
             psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -c "CREATE USER $POSTGRES_USER WITH PASSWORD '$POSTGRES_PASSWORD';"
             psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -c "ALTER DATABASE $POSTGRES_DB OWNER TO $POSTGRES_USER;"
         }
 
         # Grant privileges
         grant_privileges() {
-            echo "Granting privileges on database '$POSTGRES_DB' to user '$POSTGRES_USER'..."
+            echo "Granting privileges on database '$POSTGRES_DB' to user '$POSTGRES_USER' ..."
             psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;"
             psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -c "ALTER USER $POSTGRES_USER CREATEDB;"
         }
