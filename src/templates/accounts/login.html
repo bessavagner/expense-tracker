@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Expense Tracker - login{% endblock title %}
+
+{% block content %}
+<div class="relative flex flex-col min-h-screen w-full justify-start overflow-hidden">
+    <div class="rect login-rect"></div>
+    <div class="flex flex-col justify-center
+                z-[2] mx-auto mt-24 p-8 w-10/12 bg-base-300
+                md:w-96 md:mt-36
+                rounded-3xl shadow-2xl shadow-richblack">
+        <h2 class="text-center mb-4">Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-error" role="alert">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            {% blocktranslate %}{{ error }}{% endblocktranslate %}: 
+                            {% blocktranslate %}{{ field }}{% endblocktranslate %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label class="label justify-start">
+                    <span for="id_login" class="label-text">{% translate "Email Address" %}</span>
+                </label>
+                <input type="text" name="login" autofocus="" autocapitalize="none" autocomplete="login" maxlength="254" class="input input-bordered w-full rounded" required="" id="id_login">
+            </div>
+            <div class="mb-4">
+                <label class="label justify-start">
+                    <span for="id_password" class="label-text">{% translate "Password" %}</span>
+                </label>
+                <input type="password" name="password" autocomplete="current-password" class="input input-bordered w-full rounded" required="" id="id_password">
+            </div>
+            <div class="text-center mt-8">
+                <button class="btn btn-success w-full px-6 py-3 font-semibold rounded-xl" type="submit">Log In</button>
+            </div>
+        </form>
+        <div class="text-center mt-4">
+            <a href="#" class="text-blue-500">{% translate "Forgot my password" %}</a>
+        </div>
+    </div>
+    <div class="mx-auto mt-14 md:mt-20">
+        <div class="grid grid-rows justify-between">
+            <p class="pb-2 text-center">{% translate "Don't you have an account?" %}</p>
+            <a class="btn btn-wide btn-primary text-lg text-center px-6 py-3 rounded-full" role="button" href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

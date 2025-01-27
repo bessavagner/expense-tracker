@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .box-debug-1 {
+    @apply border-2 border-red-700 bg-red-300 opacity-5;
+  }
+  .box-debug-2 {
+    @apply border-2 border-green-700 bg-green-300 opacity-5;
+  }
+  .header {
+    @apply navbar bg-base-100 justify-end;
+  }
+  body {
+    @apply relative flex flex-col justify-start min-h-screen bg-base-100;
+  }
+
+}

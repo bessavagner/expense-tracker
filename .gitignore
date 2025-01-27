@@ -1,0 +1,47 @@
+# Byte-compiled Python files
+*.py[cod]
+
+# Log files
+*.log
+
+# Virtual environment
+.venv
+env
+venv
+
+# Credentials
+.env
+secrets*
+.pgpass
+
+# Aiohttp specific
+aiohttp_cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Development
+.*env*/
+.py*/
+.git/
+.pytest_cache
+
+# Scripting
+*.ipynb
+
+# Miscellaneous
+*.egg-info
+dist
+build
+*.pid
+*.seed
+*.sqlite3
+*.sqlite3-journal
+__pycache__/
+z_*
