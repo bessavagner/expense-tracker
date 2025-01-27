@@ -31,6 +31,8 @@ if __name__ == '__main__':
             "src/**/*.py",
             "src/templates/*.html",
             "src/templates/pages/*.html",
+            "src/templates/includes/*.html",
+            "src/templates/accounts/*.html",
             "src/staticfiles/css/*.css",
             "src/staticfiles/css/**/*.css",
             "src/staticfiles/js/*.js",
