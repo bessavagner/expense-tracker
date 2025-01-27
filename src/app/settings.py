@@ -9,11 +9,15 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-from pathlib import Path
-
 import environ
+import logging
+from logging.config import dictConfig
+from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
+
+from .config import LOG
+
+dictConfig(LOG)
 
 env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
