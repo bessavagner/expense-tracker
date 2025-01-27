@@ -1,3 +1,16 @@
-from django.shortcuts import render
+import logging
+from django.views.generic import TemplateView
+from app.mixins import ContextMixin
 
-# Create your views here.
+logger = logging.getLogger('pages.views')
+logger.setLevel(logging.DEBUG)
+
+
+class HomePageView(ContextMixin, TemplateView):
+
+    template_name = "pages/home.html"
+
+
+class ColorsPageView(ContextMixin, TemplateView):
+
+    template_name = "pages/colors.html"
