@@ -1,18 +1,29 @@
+"""Configurations for development and maintenance"""
 LOG = {
     "version": 1,
+    "disable_existing_loggers": False,
     "formatters": {
-        "client": {"format": "%(levelname)s: %(message)s"},
+        "client": {
+            "format": (
+                "%(levelname)s (%(filename)s at %(lineno)d): %(message)s"
+            )
+        },
         "standard": {
-            "format": "%(levelname)s (at %(pathname)s - %(funcName)s in line %(lineno)d): %(message)s"
+            "format": (
+                "%(levelname)s (%(funcName)s): %(message)s"
+                "\n\t├─file: %(pathname)s"
+                "\n\t╰─line: %(lineno)d"
+            )
         },
         "debug": {
             "format": (
-                "%(levelname)s (at %(module)s.%(funcName)s in line %(lineno)d):"
-                "\n\t|──file: %(pathname)s"
-                "\n\t|──process: %(process)d | name: %(processName)s"
-                "\n\t|──thread: %(thread)d | name: %(threadName)s"
-                "\n\t└──message: %(message)s\n"
-            )
+                "%(asctime)s %(levelname)s (at %(funcName)s "
+                "in line %(lineno)d):"
+                "\n\t├─file: %(pathname)s"
+                "\n\t├─task name: %(taskName)s"
+                "\n\t╰─message: %(message)s\n"
+            ),
+            "datefmt": "%y-%m-%d %H:%M:%S"
         }
     },
     "handlers": {
@@ -32,25 +43,17 @@ LOG = {
             "level": "DEBUG"
         }
     },
-    "root": {"handlers": ["standard"], "level": "DEBUG"},
     "loggers": {
-        "client": {
-            "handlers": ["client"],
-            "level": "DEBUG",
-            "propagate": False,
-            "disable_existing_loggers": False
-        },
+        "": {"handlers": ["debug"], "level": "DEBUG"},
         "standard": {
             "handlers": ["standard"],
             "level": "DEBUG",
             "propagate": False,
-            "disable_existing_loggers": False
         },
         "debugger": {
             "handlers": ["debug"],
             "level": "DEBUG",
             "propagate": False,
-            "disable_existing_loggers": False
         }
     }
 }
