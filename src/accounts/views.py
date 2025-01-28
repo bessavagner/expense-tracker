@@ -1,22 +1,56 @@
 import logging
+
+from django.conf import settings
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
-from django.views.generic.edit import FormView
+from django.template.response import TemplateResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.messages.views import SuccessMessageMixin
+
+from django.contrib.auth import get_user_model
+from django.contrib.auth import update_session_auth_hash
+
+from allauth.account.views import SignupView as AllauthSignupView
+from allauth.account.views import ConfirmEmailView as AllauthConfirmEmailView
+from allauth.account.views import (
+    PasswordChangeView as AllauthPasswordChangeView
+)
+
 from .forms import CustomUserCreationForm
 
 logger = logging.getLogger('account.views')
 
 
 class CustomLoginView(LoginView):
+    
     template_name = 'accounts/login.html'
     success_url = reverse_lazy('home')
 
-class SignupView(FormView):
+class SignupView(AllauthSignupView):
+    
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
+    success_url = reverse_lazy("login")
+
+
+class CustomConfirmEmailView(AllauthConfirmEmailView):
+
+    template_name = "accounts/email_confirm.html"
+
+class PasswordChangeView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    AllauthPasswordChangeView
+):
+    
+    form_class = PasswordChangeForm
+    template_name = "accounts/password_change.html"
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        user = form.save()
-        logger.debug(user)
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        update_session_auth_hash(self.request, form.user)
+        return response
