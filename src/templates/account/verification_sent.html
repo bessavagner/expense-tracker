@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth %}
+
+{% block title %}{% trans "Verify Your Email Address" %}{% endblock title %}
+
+{% block content %}
+<div class="flex flex-col h-[calc(100vh-_68px)] justify-start mt-20">
+    <div class="flex flex-col justify-center mx-auto p-8">
+        <h2 class="text-primary text-4xl text-center font-extrabold mb-6">{% trans "Verify Your Email Address" %}</h2>
+        <div class="mt-8 prose prose-slate mx-auto lg:prose-lg">
+            <p class="lead">
+                {% blocktrans %}We have sent an email to you for verification{% endblocktrans %}.
+            </p>
+            <p>
+                {% blocktrans %}Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.{% endblocktrans %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

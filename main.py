@@ -32,7 +32,7 @@ if __name__ == '__main__':
             "src/templates/*.html",
             "src/templates/pages/*.html",
             "src/templates/includes/*.html",
-            "src/templates/accounts/*.html",
+            "src/templates/account/*.html",
             "src/staticfiles/css/*.css",
             "src/staticfiles/css/**/*.css",
             "src/staticfiles/js/*.js",

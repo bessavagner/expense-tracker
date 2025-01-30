@@ -6,11 +6,12 @@ module.exports = {
     "../../*.py",
     "../app/*.py",
     "../app/**/*.py",
-    "../static/css/*.css",
-    "../static/js/*.js",
+    "../../data/static/css/*.css",
+    "../../data/static/js/*.js",
     "../static/js/**/*.js",
     "../templates/*.html",
     "../templates/**/*.html",
+    "../templates/account/*.html",
   ],
   theme: {
     extend: {

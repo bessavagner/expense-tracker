@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth %}
+
+{% block title %}{% trans "Account deleted" %}{% endblock title %}
+
+{% block content %}
+<div class="flex flex-col h-[calc(100vh-_68px)] justify-start">
+    <div class="flex flex-col justify-center mx-auto p-8">
+        <h2 class="text-primary text-4xl text-center font-extrabold mb-6">{% trans "This account was deleted" %}</h2>
+        <div class="mt-8 prose prose-slate mx-auto lg:prose-lg">
+            <p class="lead">
+                {% blocktrans %}The account you're trying to signup with was deleted{% endblocktrans %}.
+            </p>
+            <p>
+                {% blocktrans %}If you are interested on reactivate this account, send an email from {{ email }} to {{ email_to }} {% endblocktrans %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

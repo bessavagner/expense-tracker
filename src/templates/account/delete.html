@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Contextual AI Bot{% endblock title %}
+
+{% block content %}
+<div class="flex flex-col h-[calc(100vh_-_68px)] justify-start">
+    <div class="flex flex-col max-w-full justify-center mx-auto p-8">
+        <h2 class="text-primary text-4xl text-center font-extrabold mb-6">{% translate "Delete account" %}</h2>
+        <div class="card w-full bg-neutral text-neutral-content">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">{% translate "We're sorry you're leaving us" %}</h2>
+              <p>{% translate "Before confirming account deletion, be sure that:" %}</p>
+              <ul class="list-disc text-left">
+                {% if quota.questions > 0 %}
+                  <li>{% blocktranslate %}You still have {{ quota.questions }} left{% endblocktranslate %}</li>
+                {% endif %}
+                {% if quota.questions_gpt4 > 0 %}
+                  <li>{% blocktranslate %}{{ quota.questions_gpt4 }} unused questions to GPT-4{% endblocktranslate %}</li>
+                {% endif %}
+                {% if quota.questions_gemini_pro > 0 %}
+                  <li>{% blocktranslate %}{{ quota.questions_gemini_pro }} unused questions to Gemini Pro{% endblocktranslate %}</li>
+                {% endif %}
+                <li>{% translate "You won't be able to create a new account with the same email for 3 months" %}</li>
+                <li>{% translate "All current purchases won't be available for any use nor will they be refunded" %}</li>
+                {% if profile.type > 1 %}
+                  <li>{% translate "Your current subscription it'll be permanently deleted." %}</li>
+                {% endif %}
+                <li>{% translate "You will be missed..." %}</li>
+              </ul>
+              <div class="card-actions justify-end">
+                <form method="POST" action="{% url 'accounts:delete' user.pk %}">
+                  {% csrf_token %}
+                  <input class="hidden" type="checkbox" id="is_active" name="is_active">
+                  <a href="{% url 'accounts:settings' user.pk %}" id="cancelDeteleAccount" class="btn btn-success">Cancel</a>
+                  <button type="submit" id="confirmDeteleAccount" class="btn btn-error">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock content %}

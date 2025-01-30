@@ -35,6 +35,9 @@ class User(AbstractUser, PermissionsMixin):
     is_staff = models.BooleanField(verbose_name=_('staff'), default=False)
     is_active = models.BooleanField(verbose_name=_('active'), default=True)
     date_joined = models.DateTimeField(default=timezone.now)
+    is_verified = models.BooleanField(
+        verbose_name=_('Verified'), default=False
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

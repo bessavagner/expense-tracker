@@ -1,0 +1,47 @@
+<!-- src/templates/account/email.html -->
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load allauth %}
+
+{% block title %}{% trans "Email Addresses" %}{% endblock title %}
+
+{% block content %}
+  <div class="flex flex-col h-[calc(100vh-_68px)] justify-start mt-20">
+    <div class="flex flex-col justify-center mx-auto p-8 w-full md:w-96">
+      <h1 class="text-primary text-4xl text-center font-extrabold mb-6">{% trans "Email Address" %}</h1>
+      <form method="post" action="{% url 'account_email' %}" class="space-y-4">
+        {% csrf_token %}
+        <p class="mb-4">
+          <label for="new_email" class="label justify-start">
+            {% trans "Current email:" %}
+          </label>
+          <input disabled id="new_email" value="{{ emailaddresses.0.email }}" type="email" class="input input-bordered w-full rounded">
+          <span class="text-gray-300">
+            {% if emailaddresses.0.verified %}
+              {% trans "Verified" %}
+            {% else %}
+              {% trans "Your email address is still pending verification." %}
+              <button form="pending-email" name="action_send" type="submit" class="btn btn-primary btn-sm">
+                {% trans "Re-send Verification" %}
+              </button>
+            {% endif %}
+          </span>
+        </p>
+        <p class="mb-4">
+          <label for="id_email" class="label justify-start">
+            {% trans "Change to:" %}
+          </label>
+          <input name="email" id="id_email" type="email" class="input input-bordered w-full rounded">
+        </p>
+        <button name="action_add" type="submit" class="btn btn-primary">
+          {% trans "Change Email" %}
+        </button>
+      </form>
+      <form style="display: none" id="pending-email" method="post" action="{% url 'account_email' %}">
+        {% csrf_token %}
+        <input type="hidden" name="email" value="{{ emailaddresses.0.email }}">
+      </form>
+    </div>
+  </div>
+{% endblock content %}
