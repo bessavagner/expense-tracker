@@ -1,15 +1,12 @@
 import logging
 
-from django.conf import settings
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
-from django.template.response import TemplateResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.messages.views import SuccessMessageMixin
 
-from django.contrib.auth import get_user_model
 from django.contrib.auth import update_session_auth_hash
 
 from allauth.account.views import SignupView as AllauthSignupView
