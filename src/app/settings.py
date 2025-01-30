@@ -63,6 +63,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CHANGE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # TODO use POST via Javascript instead of this
 ACCOUNT_FORMS = {
     'add_email': 'allauth.account.forms.AddEmailForm',
@@ -74,6 +76,10 @@ ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomUserCreationForm',
     'user_token': 'allauth.account.forms.UserTokenForm',
 }
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
