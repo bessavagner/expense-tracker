@@ -1,22 +1,31 @@
-from logging.config import dictConfig
+import os
+import logging
 from pathlib import Path
 
-import environ
 import uvicorn
 
-from django.core.exceptions import ImproperlyConfigured
+logger = logging.getLogger('app')
+ch = logging.StreamHandler()
+formatter = logging.Formatter("%(levelname)s (%(filename)s at %(lineno)d): %(message)s")
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(formatter)
+logger.setLevel(logging.DEBUG)
+logger.addHandler(ch)
 
-env = environ.Env()
-BASE_DIR = Path(__file__).resolve().parent
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
 
-try:    
-    APP_NAME = env("APP_NAME")
-except ImproperlyConfigured:
-    env.read_env(BASE_DIR / '.env')
-    APP_NAME = env("APP_NAME", default="app")
-APP_DIR = env("APP_DIR", default="src")
-APP_PORT = env("APP_PORT", default=8000)
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="localhost,0.0.0.0").split(',')
+# Read environment variables from .env file
+env_file_path = Path(__file__).parent / '.env'
+if env_file_path.exists():
+    with env_file_path.open() as f:
+        for line in f:
+            key, value = line.strip().split('=', maxsplit=1)
+            os.environ[key] = value
+
+APP_NAME = os.environ.get('APP_NAME', 'app')
+APP_DIR = os.environ.get('APP_DIR', 'src')
+APP_PORT = int(os.environ.get('APP_PORT', 8000))
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,0.0.0.0').split(',')
 HOST = ALLOWED_HOSTS[1]
 
 if __name__ == '__main__':
