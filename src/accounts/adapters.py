@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 from allauth.account.adapter import DefaultAccountAdapter
 
-logger = logging.getLogger('accounts.apadapters')
+logger = logging.getLogger('accounts.adapters')
 
 User = get_user_model()
 
