@@ -54,6 +54,11 @@ LOG = {
             "handlers": ["debug"],
             "level": "DEBUG",
             "propagate": False,
+        },
+        "account.views": {
+            "handlers": ["debug"],
+            "level": "DEBUG",
+            "propagate": False
         }
     }
 }

@@ -26,6 +26,7 @@ class CustomLoginView(LoginView):
     template_name = "account/login.html"
     success_url = reverse_lazy('home')
 
+
 class SignupView(AllauthSignupView):
     
     form_class = CustomUserCreationForm

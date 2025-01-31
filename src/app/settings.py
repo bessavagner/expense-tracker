@@ -66,6 +66,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_CHANGE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # TODO use POST via Javascript instead of this
+ACCOUNT_ADAPTER = "accounts.adapters.CustomAccountAdapter"
 ACCOUNT_FORMS = {
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
@@ -84,10 +85,11 @@ AUTHENTICATION_BACKENDS = [
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
