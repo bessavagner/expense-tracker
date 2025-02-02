@@ -5,13 +5,9 @@
 {% block title %}Expense Tracker - login{% endblock title %}
 
 {% block content %}
-<div class="relative flex flex-col min-h-screen w-full justify-start overflow-hidden">
-    <div class="rect login-rect"></div>
-    <div class="flex flex-col justify-center
-                z-[2] mx-auto mt-24 p-8 w-10/12 bg-base-300
-                md:w-96 md:mt-36
-                rounded-3xl shadow-2xl shadow-richblack">
-        <h2 class="text-center mb-4">Login</h2>
+<div class="relative flex flex-col lg:flex-row min-h-screen w-full justify-start overflow-hidden">
+    <div class="flex flex-col justify-center w-10/12 mx-auto lg:mr-8 p-8 bg-primary mt-20 lg:mt-40 lg:w-96 lg:h-[440px] rounded-3xl shadow-2xl shadow-richblack">
+        <p class="text-primary-content font-header-5 text-center mb-4">Login</p>
         <form method="post">
             {% csrf_token %}
             {% if form.errors %}
@@ -26,13 +22,13 @@
             {% endif %}
             <div class="mb-4">
                 <label class="label justify-start">
-                    <span for="id_username" class="label-text">{% translate "Email Address" %}</span>
+                    <span for="id_username" class="font-base text-primary-content label-text">{% translate "Email Address" %}</span>
                 </label>
                 <input type="email" name="username" autofocus="" autocapitalize="none" autocomplete="login" maxlength="254" class="input input-bordered w-full rounded" required="" id="id_username">
             </div>
             <div class="mb-4">
                 <label class="label justify-start">
-                    <span for="id_password" class="label-text">{% translate "Password" %}</span>
+                    <span for="id_password" class="font-base text-primary-content label-text">{% translate "Password" %}</span>
                 </label>
                 <input type="password" name="password" autocomplete="current-password" class="input input-bordered w-full rounded" required="" id="id_password">
             </div>
@@ -41,13 +37,13 @@
             </div>
         </form>
         <div class="text-center mt-4">
-            <a href="#" class="text-blue-500">{% translate "Forgot my password" %}</a>
+            <a href="#" class="font-base text-md text-base-100">{% translate "Forgot my password" %}</a>
         </div>
     </div>
-    <div class="mx-auto mt-14 md:mt-20">
+    <div class="mx-auto mt-14 lg:ml-8 lg:mt-80">
         <div class="grid grid-rows justify-between">
             <p class="pb-2 text-center">{% translate "Don't you have an account?" %}</p>
-            <a class="btn btn-wide btn-primary text-lg text-center px-6 py-3 rounded-full" role="button" href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
+            <a class="btn btn-wide btn-secondary font-base text-secondary-content text-center px-6 py-3 rounded-full" role="button" href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
         </div>
     </div>
 </div>
