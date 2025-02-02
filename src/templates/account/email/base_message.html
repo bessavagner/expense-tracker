@@ -1,0 +1,73 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Expense Tracker{% endblock title %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #0073e6;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-body p {
+            margin: 10px 0;
+        }
+        .email-footer {
+            background-color: #f3f4f6;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        .email-footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Expense Tracker</h1>
+        </div>
+        <div class="email-body">
+            <p>{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}</p>
+            {% block content %}{% endblock content %}
+        </div>
+        <div class="email-footer">
+            <p>{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!{% endblocktrans %}</p>
+            <p>{% blocktrans with site_domain=current_site.domain %}{{ site_domain }}{% endblocktrans %}</p>
+        </div>
+    </div>
+</body>
+</html>
