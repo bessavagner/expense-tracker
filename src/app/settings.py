@@ -136,6 +136,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            'debug': DEBUG,  # Enable template debugging
+            'string_if_invalid': 'INVALID EXPRESSION: %s',  # Show invalid template variables
         },
     },
 ]

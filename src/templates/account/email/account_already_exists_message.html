@@ -1,0 +1,67 @@
+{% extends "account/email/base_message.html" %}
+{% load i18n %}
+
+{% block content %}
+    <style>
+        .email-content {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #151516; /* base-content */
+            line-height: 1.5;
+        }
+        .email-content p {
+            margin: 0 0 16px;
+        }
+        .code-box {
+            background-color: #f3f4f6; /* base-300 */
+            padding: 15px;
+            border-radius: 8px; /* rounded-lg */
+            text-align: center;
+            font-family: monospace;
+            font-size: 18px;
+            color: #111827; /* base-content */
+            margin-bottom: 20px;
+        }
+        .confirm-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #3a3d98; /* primary */
+            color: #ffffff; /* primary-content */
+            text-decoration: none;
+            border-radius: 8px; /* rounded-xl */
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .confirm-button:hover {
+            background-color: #2a2d78; /* darker primary */
+        }
+    </style>
+
+    <div class="email-content">
+        <p>
+            {% blocktrans %}
+                You are receiving this email because you or someone else tried to sign up for an
+                account using the email address:
+            {% endblocktrans %}
+        </p>
+
+        <div class="code-box">
+            {{ email }}
+        </div>
+
+        <p>
+            {% blocktrans %}
+                However, an account using that email address already exists. In case you have
+                forgotten about this, please use the password reset procedure to recover
+                your account:
+            {% endblocktrans %}
+        </p>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ password_reset_url }}" class="confirm-button">
+                {% trans "Reset Password" %}
+            </a>
+        </div>
+    </div>
+{% endblock content %}

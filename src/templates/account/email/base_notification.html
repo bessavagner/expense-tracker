@@ -1,0 +1,42 @@
+{% extends "account/email/base_message.html" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}
+    <div style="margin-bottom: 24px;">
+        <p style="font-size: 18px; color: #151516; line-height: 1.6;">
+            {% blocktrans %}
+                You are receiving this mail because the following change was made to your account:
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div style="background-color: #ffffff; padding: 20px; border-left: 4px solid #0073e6; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        {% block notification_message %}
+        {% endblock notification_message %}
+    </div>
+
+    <div style="margin-bottom: 24px;">
+        <p style="font-size: 18px; color: #151516; line-height: 1.6;">
+            {% blocktrans %}
+                If you do not recognize this change, please take proper security precautions immediately. The change to your account originates from:
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div style="background-color: #f3f4f6; padding: 20px; border-radius: 10px; margin-bottom: 24px;">
+        <ul style="list-style-type: disc; padding-left: 20px; font-size: 16px; color: #151516; line-height: 1.6;">
+            <li style="margin-bottom: 8px;">{% blocktrans %}IP address: {{ ip }}{% endblocktrans %}</li>
+            <li style="margin-bottom: 8px;">{% blocktrans %}Browser: {{ user_agent }}{% endblocktrans %}</li>
+            <li style="margin-bottom: 8px;">{% blocktrans %}Date: {{ timestamp }}{% endblocktrans %}</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 24px; text-align: center;">
+        <p style="font-size: 16px; color: #151516;">
+            {% blocktrans %}
+                If you have any concerns, please contact our support team immediately.
+            {% endblocktrans %}
+        </p>
+    </div>
+{% endblock content %}
