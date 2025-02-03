@@ -32,12 +32,4 @@ Currently, the project is in the data modeling and backend development phase. Th
    - Implementation of credit card and installment payment functionalities.
    - Creation of a REST API for integration with a modern frontend (e.g., React, Vue.js).
 
-## How to Use This Documentation
-
-This documentation describes the data models and managers of the project, providing details about fields, methods, and functionalities. Use it as a reference to understand the project structure and contribute to its development.
-
-- **Models**: Description of data models and their functionalities.
-- **Managers**: Custom methods for database queries and operations.
-- **Usage Examples**: Code examples for creating and manipulating data.
-
 For more details, refer to the specific sections in docs/\[app name\]
