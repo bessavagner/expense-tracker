@@ -10,16 +10,6 @@
         <p class="text-primary-content font-header-5 text-center mb-4">Login</p>
         <form method="post">
             {% csrf_token %}
-            {% if form.errors %}
-                <div class="alert alert-error" role="alert">
-                    {% for field, errors in form.errors.items %}
-                        {% for error in errors %}
-                            {% blocktranslate %}{{ error }}{% endblocktranslate %}: 
-                            {% blocktranslate %}{{ field }}{% endblocktranslate %}
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            {% endif %}
             <div class="mb-4">
                 <label class="label justify-start">
                     <span for="id_username" class="font-base text-primary-content label-text">{% translate "Email Address" %}</span>
@@ -46,5 +36,20 @@
             <a class="btn btn-secondary font-base text-secondary-content text-center w-full px-6 py-3 rounded-xl" role="button" href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
         </div>
     </div>
+    {% if form.errors %}
+    
+    <div class="toast toast-top">
+        <div class="alert alert-error" role="alert">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    {% blocktranslate %}{{ error }}{% endblocktranslate %}: 
+                    {% blocktranslate %}{{ field }}{% endblocktranslate %}
+                {% endfor %}
+            {% endfor %}
+            <button type="button" class="close-btn" onclick="closeToast()">&times;</button>
+        </div>
+    </div>
+    {% endif %}
 </div>
+<script src="{% static 'js/login.js' %}"></script>
 {% endblock content %}
