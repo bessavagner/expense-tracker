@@ -102,6 +102,7 @@ INSTALLED_APPS = [
     # local
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
+    "transactions.apps.TransactionsConfig",
     # third-party
     # "channels",
     "allauth",
