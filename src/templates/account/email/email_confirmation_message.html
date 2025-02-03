@@ -33,6 +33,14 @@
             <a href="{{ activate_url }}" class="confirm-button" style="display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #0073e6; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold;">
                 {% trans "Confirm Email" %}
             </a>
+            <p>
+                {% blocktranslate %}
+                    Or copy and paste the following link in your browser:
+                {% endblocktranslate %}
+            </p>
+            <div class="message" style="text-align: center; font-family: monospace; font-size: 18px;">
+                {{ activate_url }}
+            </div>
         </div>
     {% endif %}
 {% endblock content %}
