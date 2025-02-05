@@ -8,10 +8,13 @@ module.exports = {
     "../app/**/*.py",
     "../../data/static/css/*.css",
     "../../data/static/js/*.js",
-    "../static/js/**/*.js",
+    "../staticfiles/js/**/*.js",
+    "../staticfiles/js/*.js",
+    "../staticfiles/css/*.js",
     "../templates/*.html",
     "../templates/**/*.html",
     "../templates/account/*.html",
+    "../templates/transactions/*.html",
   ],
   theme: {
     extend: {

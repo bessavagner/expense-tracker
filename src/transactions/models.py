@@ -165,9 +165,9 @@ class Transaction(models.Model):
             raise ValidationError(_("Transfers should not have a payment method."))
         elif self.transaction_type in [self.TransactionType.INCOME, self.TransactionType.EXPENSE] and not self.payment_method:
             raise ValidationError(_("Income and expense transactions must have a payment method."))
-        category_user = getattr(self.category, "user")
-        if self.category and category_user != self.user:
-            raise ValidationError(_("Category does not belong to the user."))
+        if self.category:
+            if getattr(self.category, "user") != self.user:
+                raise ValidationError(_("Category does not belong to the user."))
 
     def save(self, *args, **kwargs):
         """Run model validation before saving."""

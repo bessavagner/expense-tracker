@@ -21,6 +21,7 @@ from django.urls import include
 
 urlpatterns = [
     path("", include("pages.urls")),
+    path("transactions/", include("transactions.urls")),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path('accounts/', include('allauth.urls')),
