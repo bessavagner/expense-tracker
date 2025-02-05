@@ -46,7 +46,7 @@ class CategoryManager(models.Manager):
         category, created = self.get_or_create(name=name)
         if created:
             logger.info("Categoria '%s' criada com sucesso.", name)
-        return category
+        return category, created
 
     def get_active_categories(self):
         """
