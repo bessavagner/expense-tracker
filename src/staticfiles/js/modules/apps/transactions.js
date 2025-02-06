@@ -1,9 +1,10 @@
 import { Modal } from "../components/modal.js";
 import { Form } from "../components/forms.js";
 import { Button } from "../components/actions.js";
-import { Component } from "../base.js";
+import { Table } from "../components/display.js";
+import { Component } from "../engine/core.js";
 
-class TransactionModal {
+class CreateTransactionModal {
   constructor() {
     const inputs = [
       {
@@ -66,9 +67,10 @@ class TransactionModal {
       },
     ];
 
-    this.modal = new Modal().render({ target: document.body });''
+    this.modal = new Modal().render({ target: document.body });
     this.formWrapper = new Component("div", "bg-base-100 w-96 p-6 rounded-lg shadow-3xl").render({ target: this.modal });
-    this.form = new Form({target: this.formWrapper, classList: "space-y-4" })
+    this.form = new Form({classList: "space-y-4" })
+      .renderInto(this.formWrapper)
       .setId("transaction-form")
       .addButton({ classList: "btn btn-secondary w-32 mr-4", text: "Cancelar", attributes: { type: "button", id: 'close-form-modal'} })
       .addButton({ classList: "btn btn-primary w-32 ml-4", text: "Criar", attributes: { type: "submit" } })
@@ -81,21 +83,35 @@ class TransactionModal {
   }
 }
 
-export class AppTransactions extends TransactionModal {
+
+class ListTransactionsModal {
+  constructor() {
+    this.table = new Table(['Descrição', 'Valor', 'Data', 'Método de Pagamento', 'Tipo de Transação'])
+    this.modal = new Modal().render({ target: document.body });
+    this.tableWrapper = new Component("div", "bg-base-100 w-96 p-6 rounded-lg shadow-3xl").render({ target: this.modal });
+    this.table.render({ target: this.tableWrapper });
+  }
+  clearTable() {
+    this.table.clear();
+  }
+}
+
+
+export class AppTransactions extends CreateTransactionModal {
   constructor(targetId) {
     if (!targetId) {
       throw new Error("Target ID is required");
     }
     super();
     this.addButton = new Button({
-      classList: "btn btn-primary",
+      classList: "btn btn-primary w-32 mr-5",
       attributes: { id: "add-transaction" },
       text: "Adicionar",
     }).addEventListener("click", () => {
       this.modal.open();
     })
     this.listButton = new Button({
-      classList: "btn btn-secondary",
+      classList: "btn btn-secondary w-32 ml-5",
       attributes: { id: "view-transactions" },
       text: "Ver",
     });

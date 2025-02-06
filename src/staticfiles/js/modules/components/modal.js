@@ -1,4 +1,4 @@
-import { Component } from '../base.js';
+import { Component } from '../engine/core.js';
 
 export class Modal extends Component {
     constructor() {

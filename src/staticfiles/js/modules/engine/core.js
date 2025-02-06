@@ -1,23 +1,26 @@
 //@ts-check
+
+import { DOMUtil, RenderEngine } from "./DOM.js";
+import { EventSystem } from "./events.js";
+import { ComponentRegistry } from "./registry.js";
+
+
 export class Component {
     /**
      * Initializes a new Component.
      * 
-     * @param {string|HTMLElement} tagOrElement - The tag name or HTMLElement to create the component.
+     * @param {string|HTMLElement|Component|Node} tagOrElement - The tag name or HTMLElement to create the component.
      * @param {Array<string>|string|null} [classList=null] - Optional class names to apply to the element.
      */
     constructor(tagOrElement, classList = null) {
-        if (typeof tagOrElement === 'string') {
-            this.element = document.createElement(tagOrElement);
-        } else if (tagOrElement instanceof HTMLElement) {
-            this.element = tagOrElement;
-        } else {
-            throw new Error('Invalid argument: must be a string (tag name) or an HTMLElement.');
-        }
-
+        this.element = DOMUtil.resolveTarget(tagOrElement);
+        this.eventSystem = new EventSystem(this.element);
+        ComponentRegistry.register(this);
         if (classList) {
             this.setClassList(classList);
         }
+        this.beforeMount();
+        this.afterMount();
     }
 
     /**
@@ -33,7 +36,9 @@ export class Component {
     }
 
     /**
-     * Sets multiple attributes on the component's element.
+     * Sets multiple attributes on thelse if (target instanceof Node) {
+            return HTMLElement.prototype.contains.call(target);
+        } e component's element.
      * 
      * @param {Object.<string, string>} attributes - An object with attribute names as keys and attribute values as values.
      * @returns {Component} This Component instance for chaining.
@@ -174,14 +179,7 @@ export class Component {
         if (!parent) {
             throw new Error('Parent element cannot be null or undefined.');
         }
-    
-        if (parent instanceof Component) {
-            parent.element.appendChild(this.element);
-        } else if (parent instanceof HTMLElement) {
-            parent.appendChild(this.element);
-        } else {
-            throw new TypeError('Parent must be an HTMLElement or Component.');
-        }
+        DOMUtil.resolveTarget(parent).appendChild(this.element);
         return this;
     }
 
@@ -193,15 +191,29 @@ export class Component {
      * @returns {Component} This Component instance for chaining.
      */
     addEventListener(event, callback) {
-        this.element.addEventListener(event, (e) => callback(e));
+        this.eventSystem.on(event, callback);
         return this;
     }
 
-    remove() {
-        this.element.remove();
+    /**
+     * Removes an event listener from the component's element.
+     * @param {string} event - The event name.
+     * @param {(event: Event) => void} callback - The callback function.
+     * @returns {Component} This Component instance for chaining.
+     */
+    removeEventListener(event, callback) {
+        this.eventSystem.off(event, callback);
         return this;
     }
 
+    /**
+     * Removes all event listeners from the component's element.
+     * @returns {Component} This Component instance for chaining.
+     */
+    clearEventListeners() {
+        this.eventSystem.clear();
+        return this;
+    }
     /**
      * @typedef {Object} RenderOptions
      * @property {HTMLElement|string|Component|null|Node} [target=document.body] - The parent element to render into.
@@ -215,54 +227,42 @@ export class Component {
      * @returns {Component|undefined} This Component instance for chaining.
      */
     render(options = {}) {
-        let { target = document.body, method = 'append', reference = null } = options;
-        let resolvedTarget;
-        if (typeof target === 'string') {
-            resolvedTarget = document.querySelector(target);
-            if (!resolvedTarget) {
-                throw new Error(`No element found for selector: "${target}"`);
-            }
-        } else if (target instanceof Component) {
-            resolvedTarget = target.element;
-        } else if (target instanceof HTMLElement) {
-            resolvedTarget = target;
-        } else {
-            throw new TypeError('Target must be a string selector, HTMLElement, or Component.');
+        const { target = document.body, method = 'append', reference = null } = options;
+        if (!target) {
+            throw new Error('Target element cannot be null or undefined.');
         }
+        const resolvedTarget = DOMUtil.resolveTarget(target);
+        const resolvedReference = reference ? DOMUtil.resolveTarget(reference) : null;
 
-        switch (method) {
-            case 'append':
-                resolvedTarget.appendChild(this.element);
-                break;
-            case 'before':
-                if (!reference || !(reference instanceof HTMLElement)) {
-                    throw new Error('Reference element is required for "before" method.');
-                }
-                resolvedTarget.insertBefore(this.element, reference);
-                break;
-            case 'replace':
-                if (!reference || !(reference instanceof HTMLElement)) {
-                    throw new Error('Reference element is required for "replace" method.');
-                }
-                resolvedTarget.replaceChild(this.element, reference);
-                break;
-            case 'beforeSibling':
-                if (!resolvedTarget.parentNode) {
-                    throw new Error('Target must have a parent to insert as a sibling.');
-                }
-                resolvedTarget.parentNode.insertBefore(this.element, resolvedTarget);
-                break;
-            case 'afterSibling':
-                if (!resolvedTarget.parentNode) {
-                    throw new Error('Target must have a parent to insert as a sibling.');
-                }
-                resolvedTarget.parentNode.insertBefore(this.element, resolvedTarget.nextSibling);
-                break;
-            default:
-                throw new Error(`Invalid render method: "${method}".`);
-        }
+        RenderEngine.render(this.element, resolvedTarget, method, resolvedReference);
+        return this;
+    }
 
-        return this; // Allow chaining
+    /**
+     * Called before the component is mounted to the DOM.
+     */
+    beforeMount() {}
+
+    /**
+     * Called after the component is mounted to the DOM.
+     */
+    afterMount() {}
+
+    /**
+     * Called before the component is removed from the DOM.
+     */
+    beforeUnmount() {}
+
+    /**
+     * Removes the component from the DOM and clears its event listeners.
+     * @returns {Component} This Component instance for chaining.
+     */
+    remove() {
+        this.beforeUnmount();
+        this.element.remove();
+        this.clearEventListeners();
+        ComponentRegistry.unregister(this);
+        return this;
     }
 
 }
