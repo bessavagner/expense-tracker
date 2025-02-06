@@ -70,7 +70,7 @@ class CreateTransactionModal {
     this.modal = new Modal().render({ target: document.body });
     this.formWrapper = new Component("div", "bg-base-100 w-96 p-6 rounded-lg shadow-3xl").render({ target: this.modal });
     this.form = new Form({classList: "space-y-4" })
-      .renderInto(this.formWrapper)
+      .render({ target: this.formWrapper })
       .setId("transaction-form")
       .addButton({ classList: "btn btn-secondary w-32 mr-4", text: "Cancelar", attributes: { type: "button", id: 'close-form-modal'} })
       .addButton({ classList: "btn btn-primary w-32 ml-4", text: "Criar", attributes: { type: "submit" } })

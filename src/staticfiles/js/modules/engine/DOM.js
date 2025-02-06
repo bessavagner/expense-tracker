@@ -17,8 +17,11 @@ export class DOMUtil {
      * @returns {HTMLElement} The resolved HTMLElement.
      * @throws {TypeError} If the target cannot be resolved.
      */
-    static resolveTarget(target) {
+    static resolveTarget(target, create = false) {
         if (typeof target === 'string') {
+            if (create) {
+                return document.createElement(target);
+            }
             const element = document.querySelector(target);
             if (element instanceof HTMLElement) {
                 return element;

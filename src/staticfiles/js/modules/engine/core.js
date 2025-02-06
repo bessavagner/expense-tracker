@@ -13,7 +13,7 @@ export class Component {
      * @param {Array<string>|string|null} [classList=null] - Optional class names to apply to the element.
      */
     constructor(tagOrElement, classList = null) {
-        this.element = DOMUtil.resolveTarget(tagOrElement);
+        this.element = DOMUtil.resolveTarget(tagOrElement, true);
         this.eventSystem = new EventSystem(this.element);
         ComponentRegistry.register(this);
         if (classList) {
