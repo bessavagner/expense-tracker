@@ -2,7 +2,6 @@
 
 import { DOMUtil, RenderEngine } from "./DOM.js";
 import { EventSystem } from "./events.js";
-import { ComponentRegistry } from "./registry.js";
 
 
 export class Component {
@@ -13,12 +12,25 @@ export class Component {
      * @param {Array<string>|string|null} [classList=null] - Optional class names to apply to the element.
      */
     constructor(tagOrElement, classList = null) {
-        this.element = DOMUtil.resolveTarget(tagOrElement, true);
+        if (typeof tagOrElement === 'string') {
+            this.element = DOMUtil.createElement(tagOrElement);
+        } else {
+            this.element = DOMUtil.resolveElement(tagOrElement);
+        }
         this.eventSystem = new EventSystem(this.element);
-        ComponentRegistry.register(this);
         if (classList) {
             this.setClassList(classList);
         }
+        this.state = {};
+    }
+
+    /**
+     * Sets the component's state and triggers an update.
+     * @param {object} newState - The new state to merge with the existing state.
+     */
+    setState(newState) {
+        this.state = { ...this.state, ...newState };
+        this.update();
     }
 
     /**
@@ -135,11 +147,9 @@ export class Component {
             return this;
         }
         if (content instanceof HTMLElement) {
-            this.element.innerHTML = "";
-            this.element.appendChild(content);
+            this.element.replaceChildren(content);
         } else if (content instanceof Component) {
-            this.element.innerHTML = "";
-            content.appendTo(this.element);
+            this.element.replaceChildren(content.element);
         } else {
             throw Error(`'content' must be a string, HTMLElement or Component, but got ${typeof content}.`);
         }
@@ -178,7 +188,7 @@ export class Component {
         if (!parent) {
             throw new Error('Parent element cannot be null or undefined.');
         }
-        DOMUtil.resolveTarget(parent).appendChild(this.element);
+        DOMUtil.resolveElement(parent).appendChild(this.element);
         return this;
     }
 
@@ -230,14 +240,33 @@ export class Component {
         if (!target) {
             throw new Error('Target element cannot be null or undefined.');
         }
-        const resolvedTarget = DOMUtil.resolveTarget(target);
-        const resolvedReference = reference ? DOMUtil.resolveTarget(reference) : null;
+        const resolvedTarget = DOMUtil.resolveElement(target);
+        const resolvedReference = reference ? DOMUtil.resolveElement(reference) : null;
         
         this.beforeMount();
         RenderEngine.render(this.element, resolvedTarget, method, resolvedReference);
         this.afterMount();
         
         return this;
+    }
+
+    /**
+     * Updates the component in the DOM.
+     */
+    update() {
+        this.beforeUpdate();
+        // Perform DOM updates here (e.g., re-render the component's content)
+        this.renderContent(); // Call renderContent to update the DOM
+        this.afterUpdate();
+    }
+
+    /**
+     * Override this method to define how the component's content is rendered.
+     * This method is called during initial render and updates.
+     */
+    renderContent() {
+        // Implement in subclasses to update the DOM based on the component's state.
+        // Example: this.element.textContent = this.state.message;
     }
 
     /**
@@ -253,6 +282,18 @@ export class Component {
     afterMount() {}
 
     /**
+     * Called before the component is updated in the DOM.
+     * Override this method to perform actions before updating.
+     */
+    beforeUpdate() {}
+
+    /**
+     * Called after the component is updated in the DOM.
+     * Override this method to perform actions after updating.
+     */
+    afterUpdate() {}
+
+    /**
      * Called before the component is removed from the DOM.
      * Override this method to perform actions before unmounting.
      */
@@ -266,7 +307,6 @@ export class Component {
         this.beforeUnmount();
         this.element.remove();
         this.clearEventListeners();
-        ComponentRegistry.unregister(this);
         return this;
     }
 
