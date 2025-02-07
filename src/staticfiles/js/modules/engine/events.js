@@ -52,5 +52,6 @@ export class EventSystem {
             this.element.removeEventListener(event, handler);
         }
         this.listeners.clear();
+        return this;
     }
 }

@@ -19,8 +19,6 @@ export class Component {
         if (classList) {
             this.setClassList(classList);
         }
-        this.beforeMount();
-        this.afterMount();
     }
 
     /**
@@ -70,7 +68,8 @@ export class Component {
      * @returns {Component} This Component instance for chaining.
      */
     setId(id) {
-        return this.setAttribute('id', id);
+        this.setAttribute('id', id);
+        return this;
     }
 
     /**
@@ -233,23 +232,29 @@ export class Component {
         }
         const resolvedTarget = DOMUtil.resolveTarget(target);
         const resolvedReference = reference ? DOMUtil.resolveTarget(reference) : null;
-
+        
+        this.beforeMount();
         RenderEngine.render(this.element, resolvedTarget, method, resolvedReference);
+        this.afterMount();
+        
         return this;
     }
 
     /**
      * Called before the component is mounted to the DOM.
+     * Override this method to perform actions before mounting.
      */
     beforeMount() {}
 
     /**
      * Called after the component is mounted to the DOM.
+     * Override this method to perform actions after mounting.
      */
     afterMount() {}
 
     /**
      * Called before the component is removed from the DOM.
+     * Override this method to perform actions before unmounting.
      */
     beforeUnmount() {}
 

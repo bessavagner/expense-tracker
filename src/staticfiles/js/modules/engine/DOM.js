@@ -1,14 +1,6 @@
 // @ts-check
 import { Component } from './core.js';
 
-/**
- * Checks if the given element is an HTMLElement.
- * @param {*} element - The element to check.
- * @returns {boolean} True if the element is an HTMLElement, false otherwise.
- */
-function isHTMLElement(element) {
-    return element instanceof HTMLElement;
-}
 
 export class DOMUtil {
     /**
@@ -26,7 +18,7 @@ export class DOMUtil {
             if (element instanceof HTMLElement) {
                 return element;
             } else {
-                throw new Error(`The element found for selector "${target}" is not an HTMLElement`);
+                throw new Error(`No element found for selector: "${target}"`);
             }
         } else if (target instanceof HTMLElement) {
             return target;
@@ -50,7 +42,6 @@ export class RenderEngine {
     static render(element, target, method = 'append', reference = null) {
         switch (method) {
             case 'append':
-                console.log(typeof element);
                 target.appendChild(element);
                 break;
             case 'before':

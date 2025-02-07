@@ -26,8 +26,13 @@ export class ComponentRegistry {
      * Cleans up all registered components.
      */
     static cleanup() {
-        for (const component of this.components) {
-            component.remove();
+        const components = new Set(this.components);
+        for (const component of components) {
+            try {
+                component.remove();
+            } catch (error) {
+                console.error('Error while removing component:', error);
+            }
         }
         this.components.clear();
     }
