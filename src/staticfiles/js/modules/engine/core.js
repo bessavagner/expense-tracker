@@ -231,6 +231,16 @@ export class Component {
      */
 
     /**
+     * Appends a child component to the input.
+     * @param {string|HTMLElement|Component|Node} tagOrElement - The child component to append.
+     * @returns {Component} This Input instance for chaining.
+     */
+    append(tagOrElement) {
+        this.element.appendChild(DOMUtil.resolveElement(tagOrElement));
+        return this;
+    }
+
+    /**
      * Renders the component into another element.
      * @param {RenderOptions} options - Options for rendering the component.
      * @returns {Component|undefined} This Component instance for chaining.
