@@ -232,11 +232,17 @@ export class Component {
 
     /**
      * Appends a child component to the input.
-     * @param {string|HTMLElement|Component|Node} tagOrElement - The child component to append.
+     * @param {string|HTMLElement|Component|Node|Array<string|HTMLElement|Component|Node>} tagOrElements - The child component to append.
      * @returns {Component} This Input instance for chaining.
      */
-    append(tagOrElement) {
-        this.element.appendChild(DOMUtil.resolveElement(tagOrElement));
+    append(tagOrElements) {
+        if (Array.isArray(tagOrElements)) {
+            tagOrElements.forEach((tagOrElement) => {
+                this.element.appendChild(DOMUtil.resolveElement(tagOrElement));
+            });
+            return this;
+        }
+        this.element.appendChild(DOMUtil.resolveElement(tagOrElements));
         return this;
     }
 
