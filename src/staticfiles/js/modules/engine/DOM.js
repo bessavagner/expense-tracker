@@ -56,17 +56,7 @@ export class RenderEngine {
       if (!reference)
         throw new Error('Reference element is required for "replace" method.');
       target.replaceChild(element, reference);
-    },
-    beforeSibling: (element, target, reference) => {
-      if (!target.parentNode)
-        throw new Error("Target must have a parent to insert as a sibling.");
-      target.parentNode.insertBefore(element, target);
-    },
-    afterSibling: (element, target, reference) => {
-      if (!target.parentNode)
-        throw new Error("Target must have a parent to insert as a sibling.");
-      target.parentNode.insertBefore(element, target.nextSibling);
-    },
+    }
   };
 
   /**

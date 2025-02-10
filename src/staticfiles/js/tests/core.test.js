@@ -254,30 +254,6 @@ describe('Component', () => {
     targetElement.remove();
   });
 
-  it('should render the component before a sibling', () => {
-    const targetElement = document.createElement('div');
-    const siblingElement = document.createElement('span');
-    targetElement.appendChild(siblingElement);
-    document.body.appendChild(targetElement);
-
-    component.render({ target: siblingElement, method: 'beforeSibling' });
-    expect(targetElement.firstChild).toBe(component.element);
-    expect(component.element.nextSibling).toBe(siblingElement);
-
-    targetElement.remove();
-  });
-
-  it('should render the component after a sibling', () => {
-    const targetElement = document.createElement('div');
-    const siblingElement = document.createElement('span');
-    targetElement.appendChild(siblingElement);
-    document.body.appendChild(targetElement);
-
-    component.render({ target: siblingElement, method: 'afterSibling' });
-    expect(siblingElement.nextSibling).toBe(component.element);
-
-    targetElement.remove();
-  });
 
   it('should throw an error for invalid render method', () => {
     const targetElement = document.createElement('div');
@@ -312,21 +288,6 @@ describe('Component', () => {
     targetElement.remove();
   });
 
-  it('should throw an error if target does not have a parent for "beforeSibling" method', () => {
-    const targetElement = document.createElement('div');
-
-    expect(() => {
-      component.render({ target: targetElement, method: 'beforeSibling' });
-    }).toThrow(Error);
-  });
-
-  it('should throw an error if target does not have a parent for "afterSibling" method', () => {
-    const targetElement = document.createElement('div');
-
-    expect(() => {
-      component.render({ target: targetElement, method: 'afterSibling' });
-    }).toThrow(Error);
-  });
 
   it('should set content with a HTMLElement', () => {
     const element = document.createElement('p');
