@@ -9,8 +9,9 @@ export class Table extends Component {
   constructor({ columns, classList = null }) {
     super("table", classList);
     this.columns = columns;
-    this.thead = new Component("thead").render({ target: this });
-    this.tbody = new Component("tbody").render({ target: this });
+    this.thead = new Component("thead");
+    this.tbody = new Component("tbody");
+    this.append([this.thead, this.tbody])
     this.createHeader();
   }
 
@@ -18,9 +19,9 @@ export class Table extends Component {
   createHeader() {
     const headerRow = new Component("tr");
     this.columns.forEach((column) => {
-      new Component("th").setText(column).render({ target: headerRow });
+      headerRow.append(new Component("th").setText(column));
     });
-    headerRow.render({ target: this.thead });
+    this.thead.append(headerRow)
   }
 
   addRow(rowData) {
@@ -28,11 +29,11 @@ export class Table extends Component {
       throw new Error("Row length does not match the number of columns.");
     }
 
-    const row = new Component("tr"); // document.createElement("tr");
+    const row = new Component("tr");
     rowData.forEach((data) => {
-      const td = new Component("td").setText(data).render({ target: row });
+      row.append(new Component("td").setText(data))
     });
-    row.render({ target: this.tbody });
+    this.tbody.append(row)
   }
   clear() {
     this.tbody.setContent("");

@@ -17,9 +17,8 @@ export class Input extends Component {
         }
         this.label = new Component('label', labelClassList).setText(labelText);
         this.label.setAttribute('for', this.input.element.id);
-        this.label.render({target: this});
-        this.input.render({target: this});
-        this.setClassList(classList);
+        this.append(this.label);
+        this.append(this.input);
     }
     setLabelText(text) {
         this.label.setText(text);
@@ -38,20 +37,20 @@ export class Select extends Component {
         }
         this.label = new Component('label', labelClassList).setText(labelText);
         this.label.setAttribute('for', this.select.element.id);
-        this.label.render({target: this});
-        this.select.render({target: this});
+        this.append(this.label);
+        this.append(this.select);
         this.options = [];
-        this.setClassList(classList);
     }
     setLabelText(text) {
         this.label.setText(text);
+        return this;
     }
     addOption({value, text}) {
         const option = new Component('option')
             .setAttribute('value', value)
             .setText(text);
         this.options.push(option);
-        option.render({target: this.select});
+        this.select.append(option);
         return this;
     }
 }
@@ -62,7 +61,7 @@ export class Form extends Component {
         this.setClassList(classList);
         this.render({target: target});
         this.buttonsWrapper = new Component('div', 'flex justify-end space-x-2');
-        this.buttonsWrapper.render({target: this});
+        this.append(this.buttonsWrapper);
         this.hasSubmitButton = false;
     }
     addInput({type = 'text', classList = null, attributes = {}, labelText = '', labelClassList = null}) {
