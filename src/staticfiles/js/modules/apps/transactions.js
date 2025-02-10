@@ -80,6 +80,7 @@ class CreateTransactionModal {
     document.getElementById("close-form-modal").addEventListener("click", () => {
       this.modal.close();
     });
+    console.log(this.form.element.tagName);
   }
 }
 

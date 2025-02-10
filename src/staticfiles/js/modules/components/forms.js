@@ -58,15 +58,16 @@ export class Select extends Component {
 export class Form extends Component {
     constructor({target, classList = null}) {
         super('form', classList);
-        this.setClassList(classList);
-        this.render({target: target});
+        if (target) {
+            this.render({target: target});
+        }
         this.buttonsWrapper = new Component('div', 'flex justify-end space-x-2');
         this.append(this.buttonsWrapper);
         this.hasSubmitButton = false;
     }
     addInput({type = 'text', classList = null, attributes = {}, labelText = '', labelClassList = null}) {
         const input = new Input({type, classList, attributes, labelText, labelClassList});
-        input.render({target: this, method: "beforeSibling", reference: this.buttonsWrapper.element});
+        input.render({target: this, method: "before", reference: this.buttonsWrapper.element});
         return this;
     }
     addInputs(inputs) {
@@ -76,7 +77,7 @@ export class Form extends Component {
     addSelect({options, classList = null, attributes = {}, labelText = '', labelClassList = null}) {
         const select = new Select({classList, attributes, labelText, labelClassList});
         options.forEach(option => select.addOption(option));
-        select.render({target: this, method: "beforeSibling", reference: this.buttonsWrapper.element});
+        select.render({target: this, method: "before", reference: this.buttonsWrapper.element});
         return this;
     }
     addSelects(selects) {
@@ -85,7 +86,7 @@ export class Form extends Component {
     }
     addButton({classList = null, attributes = {}, text = ''}) {
         const button = new Button({classList, attributes, text});
-        button.render({target: this.buttonsWrapper});
+        this.buttonsWrapper.append(button.element);
         return this;
     }
     _hasSubmitButton() {
