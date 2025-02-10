@@ -4,15 +4,18 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from .models import Transaction
 from .forms import TransactionForm
+from .contexts import TRANSACTION_FORM_INPUTS
 
 
-class TransactionView(TemplateView):
+class TransactionView(LoginRequiredMixin, TemplateView):
     template_name = 'transactions/main.html'
 
 
-class TransactionCreateView(View):
+class TransactionCreateView(LoginRequiredMixin, UserPassesTestMixin, View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -27,7 +30,7 @@ class TransactionCreateView(View):
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
 
-class TransactionListView(View):
+class TransactionListView(LoginRequiredMixin, UserPassesTestMixin, View):
     def get(self, request):
         transactions = Transaction.objects.filter(user=request.user).order_by('-date')
         data = [
@@ -41,3 +44,13 @@ class TransactionListView(View):
             for t in transactions
         ]
         return JsonResponse(data, safe=False)
+
+
+class TransactionContextView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request):
+        context = {
+            "inputs": {
+                "transactionsForm": TRANSACTION_FORM_INPUTS
+            }
+        }
+        return JsonResponse(context)
