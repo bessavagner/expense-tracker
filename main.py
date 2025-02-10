@@ -46,7 +46,10 @@ if __name__ == '__main__':
             "src/staticfiles/css/*.css",
             "src/staticfiles/css/**/*.css",
             "src/staticfiles/js/*.js",
-            "src/staticfiles/js/**/*.js",
+            "src/staticfiles/js/modules/*.js",
+            "src/staticfiles/js/modules/apps/*.js",
+            "src/staticfiles/js/modules/components/*.js",
+            "src/staticfiles/js/modules/engine/*.js",
         ],
         loop='asyncio',
     )
