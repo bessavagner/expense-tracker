@@ -1,0 +1,1472 @@
+[
+  {
+    "timestamp": "2025-02-10T15:46:14.250506",
+    "type": "component",
+    "rendering": {
+      "render": 0.4000000022351742
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0.09999999776482582
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:14.254988",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:15.562177",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:15.567911",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:17.604002",
+    "type": "component",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:17.609855",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:19.806909",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:19.812669",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.09999999776482582,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:21.487989",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:21.493889",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:22.543330",
+    "type": "component",
+    "rendering": {
+      "render": 0.3999999985098839
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0.10000000149011612
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:22.559326",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:24.607062",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:24.613928",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.4000000022351742
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:25.716120",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:25.722166",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.20000000298023224
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:26.807828",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:26.814944",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0.09999999776482582,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:27.620207",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:27.623961",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:28.395035",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:28.403823",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:29.101608",
+    "type": "component",
+    "rendering": {
+      "render": 0.20000000298023224
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:29.105803",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:29.819584",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:29.823336",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:30.582650",
+    "type": "component",
+    "rendering": {
+      "render": 0.20000000298023224
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.09999999776482582,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:30.586527",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:31.185624",
+    "type": "component",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:31.189160",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:31.810448",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:31.818012",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:32.482483",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:32.486989",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:33.164591",
+    "type": "component",
+    "rendering": {
+      "render": 0.5
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:33.168856",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.09999999776482582,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:34.518129",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:34.525623",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.4000000022351742
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:35.594658",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:35.599941",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:36.489224",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:36.496654",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:37.226624",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:37.230984",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:38.126391",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0.09999999776482582,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:38.130721",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:39.076187",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:39.080668",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:39.789897",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:39.794928",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:40.557945",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:40.562493",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:41.519842",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:41.525451",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:42.321476",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:42.325596",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:43.143494",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:43.147509",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:44.049042",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:44.055952",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:44.847815",
+    "type": "component",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:44.858152",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.09999999776482582,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:45.675984",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:45.681901",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0.09999999776482582,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:46.428981",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:46.436613",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.3999999985098839
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:47.439750",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:47.443835",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:48.618319",
+    "type": "component",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:48.626114",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:49.503848",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:49.508552",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:50.258664",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:50.266358",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.09999999776482582,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:51.035874",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:51.040249",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:51.801784",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:51.806150",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:52.524780",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0.10000000149011612
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:52.531644",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:53.203854",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:53.209956",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:53.973160",
+    "type": "component",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:53.980335",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:54.675888",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:54.682701",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:55.401885",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0.10000000149011612
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:55.409887",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:56.245305",
+    "type": "component",
+    "rendering": {
+      "render": 0.3999999985098839
+    },
+    "eventHandling": {
+      "addEventListener": 0.10000000149011612,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:46:56.249689",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.09999999776482582
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:00.078899",
+    "type": "component",
+    "rendering": {
+      "render": 0.10000000149011612
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:00.086369",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:00.806843",
+    "type": "component",
+    "rendering": {
+      "render": 0.20000000298023224
+    },
+    "eventHandling": {
+      "addEventListener": 0.09999999776482582,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:00.812462",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.19999999925494194
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:01.599034",
+    "type": "component",
+    "rendering": {
+      "render": 0
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0.10000000149011612
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:01.608966",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:02.430125",
+    "type": "component",
+    "rendering": {
+      "render": 0.09999999776482582
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0,
+      "setAttributes": 0.10000000149011612
+    }
+  },
+  {
+    "timestamp": "2025-02-10T15:47:02.439442",
+    "type": "vanilla",
+    "rendering": {
+      "render": 0.30000000074505806
+    },
+    "eventHandling": {
+      "addEventListener": 0,
+      "removeEventListener": 0
+    },
+    "domUpdates": {
+      "setContent": 0.10000000149011612,
+      "setAttributes": 0
+    }
+  }
+]

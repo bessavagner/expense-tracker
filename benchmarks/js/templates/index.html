@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmarking Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/benchmark@2.1.4/benchmark.min.js"></script>
+    <script type="module" src="/static/DOM.js"></script>
+    <script type="module" src="/static/core.js"></script>
+    <script type="module" src="/static/events.js"></script>
+    <script type="module" src="/static/benchmarks.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; margin-right: auto; margin-left: auto;}
+        #results { margin-top: 20px; }
+        pre { background: #f4f4f4; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Benchmark Results</h1>
+    <canvas id="benchmarkChart" width="400" height="200"></canvas>
+    <button id="run-benchmarks" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-32 mx-auto py-2 px-4 rounded">Run Benchmarks</button>
+    <script>
+        async function fetchResults() {
+            const response = await fetch('/results');
+            const { results } = await response.json();
+            return results;
+        }
+
+        async function renderChart() {
+            const results = await fetchResults();
+            const componentResults = results.filter(r => r.type === 'component');
+            const vanillaResults = results.filter(r => r.type === 'vanilla');
+
+            const labels = componentResults.map((_, index) => `Run ${index + 1}`);
+            const componentRenderTimes = componentResults.map(r => r.rendering.render);
+            const vanillaRenderTimes = vanillaResults.map(r => r.rendering.render);
+
+            const ctx = document.getElementById('benchmarkChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Component Rendering Time (ms)',
+                            data: componentRenderTimes,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            fill: false,
+                        },
+                        {
+                            label: 'Vanilla Rendering Time (ms)',
+                            data: vanillaRenderTimes,
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+        }
+        async function runComponentBenchmarks() {
+            await window.runBenchmarks();
+        }
+
+        async function runVanillaBenchmarks() {
+            await window.runVanillaBenchmarks();
+        }
+        document.getElementById('run-benchmarks').addEventListener('click', async () => {
+            if(Chart.getChart("benchmarkChart")) {
+                Chart.getChart("benchmarkChart")?.destroy()
+            }
+            await runComponentBenchmarks();
+            await runVanillaBenchmarks();
+            document.getElementById('benchmarkChart').innerHTML = '';
+            await renderChart();
+        });
+        if(!Chart.getChart("benchmarkChart")) {
+            renderChart();
+        }
+    </script>
+</body>
+</html>
