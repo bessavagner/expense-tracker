@@ -1,4 +1,49 @@
+//@ts-check
+
 import { Component } from "../engine/core.js";
+import { Button } from "./actions.js";
+
+
+export class ButtonsPanel extends Component {
+  /**
+   * Initializes a new ButtonsPanel component.
+   * @param {Object} options - Configuration options for the buttons panel.
+   * @param {string|Array<string>|null} [options.classList=null] - Optional class names to apply to the div container.
+   * @param {number|null} [options.buttonsLimit=null] - The maximum number of buttons allowed in the panel.
+   */
+  constructor({ classList = null, buttonsLimit = null }) {
+    super("div", classList);
+    this.buttons = [];
+    this.buttonsLimit = buttonsLimit;
+    this.setState({ buttonsCount: 0 });
+  }
+  /**
+   * Adds a button to the table.
+   * @param {Object} options - Configuration options for the button. See `Button` constructor.
+   * @returns {Button|undefined} The created button instance.
+   */
+  addButton(options) {
+    if (this.buttonsLimit && this.state.buttonsCount >= this.buttonsLimit) {
+        console.warn("Maximum number of buttons reached.");
+        return undefined;
+    }
+    const button = new Button(options);
+    this.buttons.push(button);
+    this.setState({ buttonsCount: this.buttons.length });
+    return button;
+  }
+  /**
+   * Removes a button from the table.
+   * @param {number} buttonIndex - The index of the button to remove.
+   */
+  removeButton(buttonIndex) {
+    this.buttons.splice(buttonIndex, 1)[0].remove();
+    this.setState({ buttonsCount: this.buttons.length });
+  }
+  beforeUnmount() {
+    this.buttons.forEach(button => button.remove());
+  }
+}
 
 export class Table extends Component {
   /**

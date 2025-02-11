@@ -1,19 +1,24 @@
 import { Component } from '../engine/core.js';
 
 export class Modal extends Component {
-    constructor() {
-        super('div', 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden');
+/**
+ * Initializes a Modal component.
+ * @param {string|Array<string>|null} [classList=null] - Optional class names to apply to the modal.
+ */
+    constructor(classList = null) {
+        super('div', classList);
+        this.setStyle({ display: 'none', position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', background: 'rgba(0, 0, 0, 0.5)' });
     }
 
     open() {
-        this.removeClass('hidden');
+        if (!this._isMounted) {
+            this.render({ target: document.body });
+            return this;
+        }
+        this.setStyle({ display: 'block' });
     }
 
     close() {
-        this.addClass('hidden');
-    }
-
-    toggle() {
-        this.toggleClass('hidden');
+        this.setStyle({ display: 'none' });
     }
 }

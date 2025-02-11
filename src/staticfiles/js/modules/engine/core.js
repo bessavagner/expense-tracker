@@ -23,16 +23,17 @@ export class Component {
         }
         this.state = {};
         this._isMounted = false;
+        this._renderOptions = {};
     }
 
     /**
      * Sets the component's state and triggers an update.
      * @param {object} newState - The new state to merge with the existing state.
      */
-    setState(newState) {
+    setState(newState, options = null) {
         this.state = { ...this.state, ...newState };
         if (this._isMounted) { // Only update if mounted
-            this.update();
+            this.update(options);
         }
     }
 
@@ -228,7 +229,7 @@ export class Component {
     /**
      * @typedef {Object} RenderOptions
      * @property {HTMLElement|string|Component|null|Node} [target=document.body] - The parent element to render into.
-     * @property {'append'|'before'|'replace'|'beforeSibling'|'afterSibling'} [method='append'] - How to insert the component.
+     * @property {'append'|'before'|'replace'} [method='append'] - How to insert the component.
      * @property {HTMLElement|ChildNode|null} [reference=null] - The element to insert before (for 'before' insertion or 'replace' replacement).
      */
 
@@ -270,11 +271,12 @@ export class Component {
     /**
      * Updates the component in the DOM.
      */
-    update() {
+    update(options = {}) {
         if (!this._isMounted) return;
         this.beforeUpdate();
         // Perform DOM updates here (e.g., re-render the component's content)
-        this.renderContent(); // Call renderContent to update the DOM
+        this._renderOptions = options;
+        this.renderContent(options); // Call renderContent to update the DOM
         this.afterUpdate();
     }
 
@@ -282,7 +284,7 @@ export class Component {
      * Override this method to define how the component's content is rendered.
      * This method is called during initial render and updates.
      */
-    renderContent() {
+    renderContent(options = {}) {
         // Implement in subclasses to update the DOM based on the component's state.
         // Example: this.element.textContent = this.state.message;
     }
@@ -328,6 +330,7 @@ export class Component {
         }
         this.clearEventListeners();
         this._isMounted = false; // Reset mount status
+        this.state = {};
         return this;
     }
 

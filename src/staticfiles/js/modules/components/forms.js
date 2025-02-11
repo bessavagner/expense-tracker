@@ -211,54 +211,59 @@ export class Form extends Component {
     /**
      * Adds an input to the form.
      * @param {Object} options - Configuration options for the input.  See `Input` constructor.
-     * @returns {Form} This Form instance for chaining.
+     * @returns {Input}
      */
     addInput(options) {
         const input = new Input(options);
         this.insertBeforeButtons(input);
-        return this;
+        return input
     }
 
     /**
      * Adds multiple inputs to the form.
      * @param {Array<Object>} inputs - An array of input configuration objects.  See `Input` constructor.
-     * @returns {Form} This Form instance for chaining.
+     * @returns {Array<Input>}
      */
     addInputs(inputs) {
-        inputs.forEach(input => this.addInput(input));
-        return this;
+        const _inputs = [];
+        inputs.forEach(input => {this.addInput(input); _inputs.push(input)});
+        return _inputs;
     }
 
     /**
      * Adds a select to the form.
      * @param {Object} options - Configuration options for the select. See `Select` constructor.
-     * @returns {Form} This Form instance for chaining.
+     * @returns {Select} This Form instance for chaining.
      */
     addSelect(options) {
         const select = new Select(options);
         this.insertBeforeButtons(select);
-        return this;
+        return select;
     }
 
     /**
      * Adds multiple selects to the form.
      * @param {Array<Object>} selects - An array of select configuration objects. See `Select` constructor.
-     * @returns {Form} This Form instance for chaining.
+     * @returns {Array<Select>} This Form instance for chaining.
      */
     addSelects(selects) {
-        selects.forEach(select => this.addSelect(select));
-        return this;
+        const _selects = [];
+        selects.forEach(select => {this.addSelect(select); _selects.push(select)});
+        return _selects;
     }
 
     /**
      * Adds a button to the form.
      * @param {Object} options - Configuration options for the button. See `Button` constructor.
-     * @returns {Form} This Form instance for chaining.
+     * @returns {Button} This Form instance for chaining.
      */
     addButton(options) {
         const button = new Button(options);
+        if (options.type && options.type === 'submit') {
+            this.hasSubmitButton = true;
+        }
         this.buttonsWrapper.append(button);
-        return this;
+        return button;
     }
 
     /**

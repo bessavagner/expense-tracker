@@ -20,3 +20,30 @@ export function randomId(length = 10) {
 }
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+export async function safeFetch(url, options) {
+    const requestInit = options.requestInit || {};
+    if (!requestInit.method) {
+        requestInit.method = 'GET';
+    }
+    if (!requestInit.headers) {
+        requestInit.headers = {};
+    }
+
+    if (options && options.sendCsrfmiddlewaretoken) {
+        const csrfmiddlewaretoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value; // Use optional chaining
+        if (csrfmiddlewaretoken) {
+            requestInit.headers = {
+                'X-CSRFToken': csrfmiddlewaretoken
+            };
+        }
+    }
+    try {
+        const response = await fetch(url, requestInit);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
