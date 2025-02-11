@@ -22,6 +22,7 @@ export class Component {
             this.setClassList(classList);
         }
         this.state = {};
+        this._isMounted = false;
     }
 
     /**
@@ -30,7 +31,9 @@ export class Component {
      */
     setState(newState) {
         this.state = { ...this.state, ...newState };
-        this.update();
+        if (this._isMounted) { // Only update if mounted
+            this.update();
+        }
     }
 
     /**
@@ -94,9 +97,11 @@ export class Component {
      */
     setClassList(classList) {
         if (Array.isArray(classList)) {
-            classList.forEach((classItem) => this.addClass(classItem));
-        } else {
+            this.element.className = classList.join(' ');
+        } else if (typeof classList === 'string') {
             this.element.className = classList;
+        } else if (classList) {
+            throw new TypeError("classList must be a string or an array of strings.");
         }
         return this;
     }
@@ -185,9 +190,6 @@ export class Component {
      * @returns {Component} This Component instance for chaining.
      */
     appendTo(parent) {
-        if (!parent) {
-            throw new Error('Parent element cannot be null or undefined.');
-        }
         DOMUtil.resolveElement(parent).appendChild(this.element);
         return this;
     }
@@ -237,12 +239,10 @@ export class Component {
      */
     append(tagOrElements) {
         if (Array.isArray(tagOrElements)) {
-            tagOrElements.forEach((tagOrElement) => {
-                this.element.appendChild(DOMUtil.resolveElement(tagOrElement));
-            });
-            return this;
+            tagOrElements.forEach(el => this.element.appendChild(DOMUtil.resolveElement(el)));
+        } else {
+            this.element.appendChild(DOMUtil.resolveElement(tagOrElements));
         }
-        this.element.appendChild(DOMUtil.resolveElement(tagOrElements));
         return this;
     }
 
@@ -261,6 +261,7 @@ export class Component {
         
         this.beforeMount();
         RenderEngine.render(this.element, resolvedTarget, method, resolvedReference);
+        this._isMounted = true;
         this.afterMount();
         
         return this;
@@ -270,6 +271,7 @@ export class Component {
      * Updates the component in the DOM.
      */
     update() {
+        if (!this._isMounted) return;
         this.beforeUpdate();
         // Perform DOM updates here (e.g., re-render the component's content)
         this.renderContent(); // Call renderContent to update the DOM
@@ -321,8 +323,11 @@ export class Component {
      */
     remove() {
         this.beforeUnmount();
-        this.element.remove();
+        if (this.element.parentNode) { // Check if it has a parent before removing
+            this.element.parentNode.removeChild(this.element);
+        }
         this.clearEventListeners();
+        this._isMounted = false; // Reset mount status
         return this;
     }
 
