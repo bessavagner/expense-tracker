@@ -5,6 +5,8 @@ import { Form } from "../components/forms.js";
 import { Table, ButtonsPanel } from "../components/display.js";
 import { Component } from "../engine/core.js";
 import { createTransactionContext } from "./contexts.js";
+import { safeFetch } from "../tools.js";
+
 
 class CreateViewTransactionsBoard extends ButtonsPanel {
   /**
@@ -109,13 +111,73 @@ class AppCreateTransactions {
   }
 }
 
+class ListTransactionTable extends Table {
+    constructor(data) {
+        super({ columns: data.columns, data: data.rows, classList: 'table table-auto max-w-4xl mx-auto' });
+    }
+}
 
-class ListTransactionsModal {
 
+class AppListTransactions {
+  /**
+   * Initializes a new AppListTransactions component.
+   */
+  constructor() {
+    this.transactionTable = new ListTransactionTable({}); // Initialize with empty data
+    this.modal = new Modal();
+    this.tableWrapper = new Component("div", "absolute top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 bg-base-100 w-11/12 p-6 rounded-lg shadow-3xl");
+    this.tableWrapper.append(this.transactionTable);
+    this.modal.append(this.tableWrapper);
+    this.data = [];
+  }
+
+  /**
+   * Fetches transactions data from the server.
+   * @returns {Promise<Array<object>>} A promise that resolves to an array of transaction objects.
+   */
+  async fetchTransactions() {
+    try {
+      const data = await safeFetch('/transactions/list/', {});
+      this.data = data;
+      return this.data;
+    } catch (error) {
+      console.error('Failed to fetch transactions:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Renders the list of transactions in a table within a modal.
+   */
+  async render() {
+    await this.fetchTransactions();
+    console.log(this.data);
+    this.transactionTable.setData(this.data); // Update the table with fetched data
+    this.modal.render({ target: document.body }); // Ensure modal is rendered
+  }
+
+  /**
+   * Opens the modal containing the transaction table.
+   */
+  openModal() {
+    this.modal.open();
+  }
+
+  /**
+   * Closes the modal containing the transaction table.
+   */
+  closeModal() {
+    this.modal.close();
+  }
 }
 
 
 export class AppTransactions {
+  /**
+   * Creates a new AppTransactions instance.
+   * @param {string} targetId - The ID of the element to render the transactions app into.
+   * @throws {Error} If the target element is not found.
+   */
   constructor(targetId) {
     if (!targetId) {
       throw new Error("Target ID is required");
@@ -128,12 +190,18 @@ export class AppTransactions {
     this.panel = new CreateViewTransactionsBoard();
     this.target.append(this.panel);
     this.createTransactions = new AppCreateTransactions();
+    this.listTransactions = new AppListTransactions();
   }
   async render() {
     await this.createTransactions.render();
     this.panel.createButton
       .setText(this.createTransactions.context.create.text)
       .addEventListener("click", () => this.createTransactions.modal.open());
-    this.panel.viewButton.setText(this.createTransactions.context.view.text);
+    this.panel.viewButton
+      .setText(this.createTransactions.context.view.text)
+      .addEventListener("click", async () => {
+        await this.listTransactions.render(); // Fetch and render the table data
+        this.listTransactions.openModal(); // Open the modal
+      });
   }
 }

@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from .models import Transaction
 from .forms import TransactionForm
-from .contexts import TRANSACTION_FORM_INPUTS
+from .contexts import TRANSACTION_FORM_INPUTS, TRANSACTIONS_COLUMNS
 
 
 class TransactionView(LoginRequiredMixin, TemplateView):
@@ -35,15 +35,19 @@ class TransactionListView(LoginRequiredMixin, View):
         transactions = Transaction.objects.filter(user=request.user).order_by('-date')
         data = [
             {
-                'description': t.description,
-                'amount': str(t.amount),
-                'date': t.date.strftime('%Y-%m-%d'),
-                'payment_method': t.get_payment_method_display(),
-                'transaction_type': t.get_transaction_type_display(),
+                str(TRANSACTIONS_COLUMNS[0]): t.description,
+                str(TRANSACTIONS_COLUMNS[1]): str(t.amount),
+                str(TRANSACTIONS_COLUMNS[2]): t.date.strftime('%Y-%m-%d'),
+                str(TRANSACTIONS_COLUMNS[3]): t.get_payment_method_display(),
+                str(TRANSACTIONS_COLUMNS[4]): t.get_transaction_type_display(),
             }
             for t in transactions
         ]
-        return JsonResponse(data, safe=False)
+        response = {
+            "rows": data,
+            "columns": TRANSACTIONS_COLUMNS
+        }
+        return JsonResponse(response, safe=False)
 
 
 class TransactionContextView(LoginRequiredMixin, View):

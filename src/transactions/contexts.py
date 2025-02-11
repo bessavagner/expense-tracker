@@ -36,3 +36,11 @@ TRANSACTION_FORM_INPUTS = {
         "text": _("View"),
     }
 }
+
+TRANSACTIONS_COLUMNS = [
+    _("Description"),
+    _("Amount"),
+    _("Date"),
+    _("Payment Method"),
+    _("Transaction Type"),
+]

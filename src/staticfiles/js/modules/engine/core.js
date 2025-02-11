@@ -30,7 +30,7 @@ export class Component {
      * Sets the component's state and triggers an update.
      * @param {object} newState - The new state to merge with the existing state.
      */
-    setState(newState, options = null) {
+    setState(newState, options = {}) {
         this.state = { ...this.state, ...newState };
         if (this._isMounted) { // Only update if mounted
             this.update(options);

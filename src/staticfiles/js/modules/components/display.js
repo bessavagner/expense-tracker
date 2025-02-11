@@ -60,9 +60,13 @@ export class Table extends Component {
     this.data = options.data || [];
     this.thead = new Component("thead").appendTo(this);
     this.tbody = new Component("tbody").appendTo(this);
-
-    this.createHeader();
-    this.renderContent(); // Render initial data
+    this._isHeaderRendered = false;
+    
+    if (this.columns && this.columns.length > 0) {
+      this.createHeader();
+      this._isHeaderRendered = true;
+      this.renderContent(); // Render initial data
+    }
   }
 
   /**
@@ -90,10 +94,17 @@ export class Table extends Component {
 
   /**
    * Sets the table data, replacing any existing data.
-   * @param {Array<object>} data - An array of objects, where each object represents a row of data.
+   * @param {Array<object>|Object} data - An array of objects, where each object represents a row of data.
    */
   setData(data) {
-    this.data = data;
+    if (Array.isArray(data)) {
+      this.data = data;
+    } else {
+      if (!data.rows) throw new Error("No rows provided");
+      if (!data.columns) throw new Error("No columns provided");
+      this.data = data.rows;
+      this.columns = data.columns;
+    }
     this.renderContent();
   }
 
@@ -115,6 +126,12 @@ export class Table extends Component {
    * Override renderContent to update the table when the component's state changes.
    */
   renderContent() {
+    if (!this._isHeaderRendered) {
+      if (!this.columns || this.columns.length === 0) {
+        throw new Error("No columns provided");
+      }
+      this.createHeader();
+    }
     this.tbody.setContent('');
     this.data.forEach(rowData => {
         const row = new Component("tr");

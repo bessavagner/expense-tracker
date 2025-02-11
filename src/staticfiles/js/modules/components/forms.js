@@ -199,7 +199,8 @@ export class Form extends Component {
      */
     constructor({ target, classList = null }) {
         super('form', classList);
-        this.buttonsWrapper = new Component('div', 'flex justify-end space-x-2');
+        this.buttonsWrapper = new Component('div');
+        this.buttonsWrapper.setStyle({ display: "flex", flexDirection: "row", justifyContent: "flex-end", gap: "0.5rem" });
         this.append(this.buttonsWrapper);
         this.hasSubmitButton = false;
 
