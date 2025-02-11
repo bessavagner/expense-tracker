@@ -15,7 +15,7 @@ class TransactionView(LoginRequiredMixin, TemplateView):
     template_name = 'transactions/main.html'
 
 
-class TransactionCreateView(LoginRequiredMixin, UserPassesTestMixin, View):
+class TransactionCreateView(LoginRequiredMixin, View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -30,7 +30,7 @@ class TransactionCreateView(LoginRequiredMixin, UserPassesTestMixin, View):
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
 
-class TransactionListView(LoginRequiredMixin, UserPassesTestMixin, View):
+class TransactionListView(LoginRequiredMixin, View):
     def get(self, request):
         transactions = Transaction.objects.filter(user=request.user).order_by('-date')
         data = [
@@ -46,7 +46,7 @@ class TransactionListView(LoginRequiredMixin, UserPassesTestMixin, View):
         return JsonResponse(data, safe=False)
 
 
-class TransactionContextView(LoginRequiredMixin, UserPassesTestMixin, View):
+class TransactionContextView(LoginRequiredMixin, View):
     def get(self, request):
         context = {
             "inputs": {
