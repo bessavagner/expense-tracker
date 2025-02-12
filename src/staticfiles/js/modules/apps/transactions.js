@@ -117,6 +117,23 @@ class ListTransactionTable extends Table {
     }
 }
 
+class ListTransactionBoard extends ButtonsPanel {
+  constructor() {
+    super({ classList: "absolute top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 bg-base-100 w-11/12 p-6 rounded-lg shadow-3xl", buttonsLimit: 1 });
+    this.closeButton = this.addButton({ classList: "btn btn-secondary w-32 mr-4"});
+    this.buttonsWrapper = new Component("div", "flex flex-row justify-end");
+    if (this.closeButton) {
+      this.buttonsWrapper.append(this.closeButton);
+    } else {
+      throw new Error("Something went wrong with buttons creation.");
+    }
+    this.append(this.buttonsWrapper);
+  }
+  addCloseEventListener(callback) {
+    this.closeButton.addEventListener("click", callback);
+  }
+}
+
 
 class AppListTransactions {
   /**
@@ -124,11 +141,14 @@ class AppListTransactions {
    */
   constructor() {
     this.transactionTable = new ListTransactionTable({}); // Initialize with empty data
+    this.panel = new ListTransactionBoard()
     this.modal = new Modal();
-    this.tableWrapper = new Component("div", "absolute top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 bg-base-100 w-11/12 p-6 rounded-lg shadow-3xl");
-    this.tableWrapper.append(this.transactionTable);
-    this.modal.append(this.tableWrapper);
+    
+    this.transactionTable.render({ target: this.panel, method: "before", reference: this.panel.buttonsWrapper.element });
+    this.modal.append(this.panel);
+    
     this.data = [];
+    this.panel.addCloseEventListener(() => this.modal.close());
   }
 
   /**
@@ -194,6 +214,7 @@ export class AppTransactions {
   }
   async render() {
     await this.createTransactions.render();
+    this.listTransactions.panel.closeButton.setText(this.createTransactions.context.close.text);
     this.panel.createButton
       .setText(this.createTransactions.context.create.text)
       .addEventListener("click", () => this.createTransactions.modal.open());

@@ -29,6 +29,9 @@ TRANSACTION_FORM_INPUTS = {
     "cancel": {
         "text": _("Cancel"),
     },
+    "close": {
+        "text": _("Close"),
+    },
     "create": {
         "text": _("Create"),
     },
@@ -38,9 +41,9 @@ TRANSACTION_FORM_INPUTS = {
 }
 
 TRANSACTIONS_COLUMNS = [
-    _("Description"),
-    _("Amount"),
     _("Date"),
+    _("Amount"),
+    _("Description"),
     _("Payment Method"),
     _("Transaction Type"),
 ]

@@ -53,6 +53,7 @@ export async function createTransactionContext() {
         inputs: TRANSACTION_FORM_INPUTS,
         selects: TRANSACTION_FORM_SELECTS,
         cancel: inputs.cancel,
+        close: inputs.close,
         create: inputs.create,
         view: inputs.view
     }

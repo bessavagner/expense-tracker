@@ -35,9 +35,9 @@ class TransactionListView(LoginRequiredMixin, View):
         transactions = Transaction.objects.filter(user=request.user).order_by('-date')
         data = [
             {
-                str(TRANSACTIONS_COLUMNS[0]): t.description,
+                str(TRANSACTIONS_COLUMNS[0]): t.date.strftime('%Y-%m-%d'),
                 str(TRANSACTIONS_COLUMNS[1]): str(t.amount),
-                str(TRANSACTIONS_COLUMNS[2]): t.date.strftime('%Y-%m-%d'),
+                str(TRANSACTIONS_COLUMNS[2]): t.description,
                 str(TRANSACTIONS_COLUMNS[3]): t.get_payment_method_display(),
                 str(TRANSACTIONS_COLUMNS[4]): t.get_transaction_type_display(),
             }
